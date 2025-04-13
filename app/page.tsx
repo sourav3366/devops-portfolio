@@ -30,6 +30,18 @@ export default function Home() {
   const handleGitHubClick = () => {
     window.open('https://github.com/yourgithub', '_blank'); // Replace with your actual Github
   };
+    const handleAWSCertificateClick = () => {
+    window.open('https://aws.amazon.com/certification/', '_blank'); // Replace with your actual AWS Certificate Link
+  };
+
+  const handleAzureCertificateClick = () => {
+    window.open('https://learn.microsoft.com/en-us/certifications/', '_blank'); // Replace with your actual Azure Certificate Link
+  };
+
+  const handleGCPCertificateClick = () => {
+    window.open('https://cloud.google.com/certification', '_blank'); // Replace with your actual GCP Certificate Link
+  };
+
 
   return (
     <div className="min-h-screen px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
@@ -51,12 +63,16 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
           {['AWS', 'Azure', 'GCP'].map((platform) => (
             <div
-              key={platform}
-              className="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md"
-            >
-              <h3 className="text-lg font-semibold mb-2">{platform}</h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Certified Professional
+              key={platform} onClick={platform === 'AWS' ? handleAWSCertificateClick : platform === 'Azure' ? handleAzureCertificateClick : handleGCPCertificateClick} className="p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
+                <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold mb-2">{platform}</h3>
+                <FaExternalLinkAlt className="text-sm ml-2" />
+              </div>
+                <p className="text-gray-600 dark:text-gray-300">
+                <span >
+                 Certified Professional
+                 
+                </span>
               </p>
             </div>
           ))}
@@ -99,7 +115,9 @@ export default function Home() {
                   <FaEnvelope className="text-blue-500 dark:text-blue-300" />
                     <span className="text-lg ml-4">Email</span></div>
                   <button onClick={handleEmailClick} className="flex items-center">
+                  
                 <FaExternalLinkAlt className="text-sm ml-2" />
+                  
                   </button>
                 </li>
                 <li className="flex items-center justify-between">
